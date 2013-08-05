@@ -239,7 +239,7 @@ struct mstudiobone_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 	int		 			parent;		// parent bone
 	int					bonecontroller[6];	// bone controller index, -1 == none
 
@@ -259,7 +259,7 @@ struct mstudiobone_t
 	mutable int			physicsbone;	// index into physically simulated bone
 	inline void *pProcedure( ) const { if (procindex == 0) return NULL; else return  (void *)(((byte *)this) + procindex); };
 	int					surfacepropidx;	// index into string tablefor property name
-	inline char * const pszSurfaceProp( void ) const { return ((char *)this) + surfacepropidx; }
+	inline char 		*pszSurfaceProp( void ) const { return ((char *)this) + surfacepropidx; }
 	int					contents;		// See BSPFlags.h for the contents flags
 
 	int					unused[8];		// remove as appropriate
@@ -390,9 +390,9 @@ struct mstudiomodelgroup_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					szlabelindex;	// textual name
-	inline char * const pszLabel( void ) const { return ((char *)this) + szlabelindex; }
+	inline char 		*pszLabel( void ) const { return ((char *)this) + szlabelindex; }
 	int					sznameindex;	// file name
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 };
 
 struct mstudiomodelgrouplookup_t
@@ -412,7 +412,7 @@ struct mstudioevent_t
 	char				options[64];
 
 	int					szeventindex;
-	inline char * const pszEventName( void ) const { return ((char *)this) + szeventindex; }
+	inline char 		*pszEventName( void ) const { return ((char *)this) + szeventindex; }
 };
 
 #define	ATTACHMENT_FLAG_WORLD_ALIGN 0x10000
@@ -422,7 +422,7 @@ struct mstudioattachment_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 	unsigned int		flags;
 	int					localbone;
 	matrix3x4_t			local; // attachment point
@@ -504,7 +504,7 @@ struct mstudioikrule_t
 	int			unused8;
 
 	int			szattachmentindex;		// name of world attachment
-	inline char * const pszAttachment( void ) const { return ((char *)this) + szattachmentindex; }
+	inline char *pszAttachment( void ) const { return ((char *)this) + szattachmentindex; }
 
 	int			unused[7];
 
@@ -637,7 +637,7 @@ struct mstudioanimdesc_t
 	inline studiohdr_t	*pStudiohdr( void ) const { return (studiohdr_t *)(((byte *)this) + baseptr); }
 
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 
 	float				fps;		// frames per second	
 	int					flags;		// looping/non-looping flags
@@ -647,7 +647,7 @@ struct mstudioanimdesc_t
 	// piecewise movement
 	int					nummovements;
 	int					movementindex;
-	inline mstudiomovement_t * const pMovement( int i ) const { return (mstudiomovement_t *)(((byte *)this) + movementindex) + i; };
+	inline mstudiomovement_t *pMovement( int i ) const { return (mstudiomovement_t *)(((byte *)this) + movementindex) + i; };
 
 	int					unused1[6];			// remove as appropriate (and zero if loading older versions)	
 
@@ -668,7 +668,7 @@ struct mstudioanimdesc_t
 
 	int					sectionindex;
 	int					sectionframes; // number of frames used in each fast lookup section, zero if not used
-	inline mstudioanimsections_t * const pSection( int i ) const { return (mstudioanimsections_t *)(((byte *)this) + sectionindex) + i; }
+	inline mstudioanimsections_t *pSection( int i ) const { return (mstudioanimsections_t *)(((byte *)this) + sectionindex) + i; }
 
 	short				zeroframespan;	// frames per span
 	short				zeroframecount; // number of spans
@@ -706,10 +706,10 @@ struct mstudioseqdesc_t
 	inline studiohdr_t	*pStudiohdr( void ) const { return (studiohdr_t *)(((byte *)this) + baseptr); }
 
 	int					szlabelindex;
-	inline char * const pszLabel( void ) const { return ((char *)this) + szlabelindex; }
+	inline char 		*pszLabel( void ) const { return ((char *)this) + szlabelindex; }
 
 	int					szactivitynameindex;
-	inline char * const pszActivityName( void ) const { return ((char *)this) + szactivitynameindex; }
+	inline char 		*pszActivityName( void ) const { return ((char *)this) + szactivitynameindex; }
 
 	int					flags;		// looping/non-looping flags
 
@@ -807,7 +807,7 @@ struct mstudioposeparamdesc_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 	int					flags;	// ????
 	float				start;	// starting value
 	float				end;	// ending value
@@ -818,7 +818,7 @@ struct mstudioflexdesc_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					szFACSindex;
-	inline char * const pszFACS( void ) const { return ((char *)this) + szFACSindex; }
+	inline char 		*szFACS( void ) const { return ((char *)this) + szFACSindex; }
 };
 
 
@@ -827,9 +827,9 @@ struct mstudioflexcontroller_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sztypeindex;
-	inline char * const pszType( void ) const { return ((char *)this) + sztypeindex; }
+	inline char 		*pszType( void ) const { return ((char *)this) + sztypeindex; }
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 	mutable int			localToGlobal;	// remapped at load time to master list
 	float				min;
 	float				max;
@@ -850,7 +850,7 @@ struct mstudioflexcontrollerui_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 
 	// These are used like a union to save space
 	// Here are the possible configurations for a UI controller
@@ -868,28 +868,28 @@ struct mstudioflexcontrollerui_t
 	{
 		return !stereo ? (mstudioflexcontroller_t *)( (char *)this + szindex0 ) : NULL;
 	}
-	inline char * const	pszControllerName( void ) const { return !stereo ? pController()->pszName() : NULL; }
+	inline char 		*pszControllerName( void ) const { return !stereo ? pController()->pszName() : NULL; }
 	inline int			controllerIndex( const CStudioHdr &cStudioHdr ) const;
 
 	inline const mstudioflexcontroller_t *pLeftController( void ) const
 	{
 		return stereo ? (mstudioflexcontroller_t *)( (char *)this + szindex0 ) : NULL;
 	}
-	inline char * const	pszLeftName( void ) const { return stereo ? pLeftController()->pszName() : NULL; }
+	inline char 		*pszLeftName( void ) const { return stereo ? pLeftController()->pszName() : NULL; }
 	inline int			leftIndex( const CStudioHdr &cStudioHdr ) const;
 
 	inline const mstudioflexcontroller_t *pRightController( void ) const
 	{
 		return stereo ? (mstudioflexcontroller_t *)( (char *)this + szindex1 ): NULL;
 	}
-	inline char * const	pszRightName( void ) const { return stereo ? pRightController()->pszName() : NULL; }
+	inline char 		*pszRightName( void ) const { return stereo ? pRightController()->pszName() : NULL; }
 	inline int			rightIndex( const CStudioHdr &cStudioHdr ) const;
 
 	inline const mstudioflexcontroller_t *pNWayValueController( void ) const
 	{
 		return remaptype == FLEXCONTROLLER_REMAP_NWAY ? (mstudioflexcontroller_t *)( (char *)this + szindex2 ) : NULL;
 	}
-	inline char * const	pszNWayValueName( void ) const { return remaptype == FLEXCONTROLLER_REMAP_NWAY ? pNWayValueController()->pszName() : NULL; }
+	inline char 		*pszNWayValueName( void ) const { return remaptype == FLEXCONTROLLER_REMAP_NWAY ? pNWayValueController()->pszName() : NULL; }
 	inline int			nWayValueIndex( const CStudioHdr &cStudioHdr ) const;
 
 	// Number of controllers this ui description contains, 1, 2 or 3
@@ -1121,7 +1121,7 @@ struct mstudiotexture_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int						sznameindex;
-	inline char * const		pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 			*pszName( void ) const { return ((char *)this) + sznameindex; }
 	int						flags;
 	int						used;
     int						unused1;
@@ -1136,7 +1136,7 @@ struct mstudioeyeball_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 	int		bone;
 	Vector	org;
 	float	zoffset;
@@ -1186,7 +1186,7 @@ struct mstudioikchain_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int				sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 	*pszName( void ) const { return ((char *)this) + sznameindex; }
 	int				linktype;
 	int				numlinks;
 	int				linkindex;
@@ -1533,7 +1533,7 @@ struct mstudiobodyparts_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sznameindex;
-	inline char * const pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 	int					nummodels;
 	int					base;
 	int					modelindex; // index into models array
@@ -1558,7 +1558,7 @@ struct mstudiohitboxset_t
 {
 	DECLARE_BYTESWAP_DATADESC();
 	int					sznameindex;
-	inline char * const	pszName( void ) const { return ((char *)this) + sznameindex; }
+	inline char 		*pszName( void ) const { return ((char *)this) + sznameindex; }
 	int					numhitboxes;
 	int					hitboxindex;
 	inline mstudiobbox_t *pHitbox( int i ) const { return (mstudiobbox_t *)(((byte *)this) + hitboxindex) + i; };
@@ -2156,7 +2156,7 @@ struct studiohdr_t
 	int					GetSharedPoseParameter( int iSequence, int iLocalPose ) const;
 
 	int					surfacepropindex;
-	inline char * const pszSurfaceProp( void ) const { return ((char *)this) + surfacepropindex; }
+	inline char 		*pszSurfaceProp( void ) const { return ((char *)this) + surfacepropindex; }
 
 	// Key values
 	int					keyvalueindex;
@@ -2190,7 +2190,7 @@ struct studiohdr_t
 
 	// for demand loaded animation blocks
 	int					szanimblocknameindex;	
-	inline char * const pszAnimBlockName( void ) const { return ((char *)this) + szanimblocknameindex; }
+	inline char 		*pszAnimBlockName( void ) const { return ((char *)this) + szanimblocknameindex; }
 	int					numanimblocks;
 	int					animblockindex;
 	inline mstudioanimblock_t *pAnimBlock( int i ) const { Assert( i > 0 && i < numanimblocks); return (mstudioanimblock_t *)(((byte *)this) + animblockindex) + i; };
@@ -2381,7 +2381,7 @@ public:
 
 	inline int			flags() const { return m_pStudioHdr->flags; };
 
-	inline char			*const pszSurfaceProp( void ) const { return m_pStudioHdr->pszSurfaceProp(); };
+	inline const char			*pszSurfaceProp( void ) const { return m_pStudioHdr->pszSurfaceProp(); };
 
 	inline float		mass() const { return m_pStudioHdr->mass; };
 	inline int			contents() const { return m_pStudioHdr->contents; }

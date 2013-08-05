@@ -54,9 +54,9 @@ public:
 		_a = _color[3];
 	}
 
-	void SetRawColor( int color32 )
+	void SetRawColor( int color32b )
 	{
-		*((int *)this) = color32;
+		*((int *)this) = color32b;
 	}
 
 	int GetRawColor() const

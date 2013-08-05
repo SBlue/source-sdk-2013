@@ -101,7 +101,7 @@ struct ALIGN16 intx4
 		return m_i32;
 	}
 
-	inline const bool operator==(const intx4 &other) const
+	inline bool operator==(const intx4 &other) const
 	{
 		return m_i32[0] == other.m_i32[0] &&
 			m_i32[1] == other.m_i32[1] &&
